@@ -10,72 +10,60 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <style>
         body {
-    font-family: "Lato", sans-serif;
-    transition: background-color .5s;
-}
+            font-family: "Lato", sans-serif;
+            transition: background-color .5s;
+        }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
 
-.sidenav a:hover {
-    color: #f1f1f1;
-}
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
 
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-
-</style>
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+    </style>
 
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div id=" mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="#">Rate Site</a>
-            <a href="#">Services</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </div>
+    <div class="container-fluid" style="text-align: center;">
         <div class="topnav">
             <div class="row">
                 <div class="col-md-2">
-                    <div id="main">
-                        <span style="font-size:13px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
-                    </div>
+                    <img src="../static/images/mainnav.png" height="50px;" width="200px;">
                 </div>
 
                 <div class="col-md-2" height="5px;" width="10px;">
-                    
+
                 </div>
                 <div class="col-md-4" id="logo">
-                    <a href="#"><strong>LocoMotion.</strong></a>
+                    <a href="#" style="color: white;"><strong>LocoMotion.</strong></a>
                 </div>
                 <div class="col-md-2" id="drop">
                     {% if user.is_authenticated %}
@@ -103,8 +91,8 @@
 
                     {% else %}
                     <li style="list-style: none;">
-                        <a href="#" style="font-size: 13px;">REGISTER /</a>
-                        <a class='btn btn-default' href="#" style="font-size: 13px;">LOGIN</a>
+                        <a href="#" style="font-size: 13px;color: white;" class="btn btn-outline-dark">REGISTER /</a>
+                        <a href="#" style="font-size: 13px;color: white;" class="btn btn-outline-dark">LOGIN<a>
                     </li>
 
                     {% endif %}
@@ -113,25 +101,11 @@
                     <h1 class="profile-user-name" style="font-size: 14px;"></h1>
                     {% endif %}
                 </div>
-                <div class="col-md-2" style="text-align: center; padding-top: 16px; font-size: 13px; color:white;background-color: #42AB9E;">
-                    <a href="#" style="color: white;">RATE OUR SITE!</a>
+                <div class="col-md-2" style="text-align: center; padding-top: 16px; font-size: 13px; color:white;background-color: rgba(2, 2, 44, 0.705);">
+                    <a href="#" style="color: white;"  class="btn btn-outline-dark">RATE OUR SITE!</a>
                 </div>
             </div>
         </div>
-
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginLeft = "250px";
-                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-                document.getElementById("main").style.marginLeft = "0";
-                document.body.style.backgroundColor = "white";
-            }
-        </script>
     </div>
 </body>
 
