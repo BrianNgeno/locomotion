@@ -1,6 +1,6 @@
-# Awward
+# Locomotion
 
-This is an online application that is used to share personal projects to other programmers or users who would like to share rate, like and view projects posted by other users.
+This is an online application that is used to make available moving services for people who wish to move their office or home location. 
 
 ## Specifications
 To be able to access the application the user should install the latest version of goole chrome, mozilla firefox or explore and load the live link provided.
