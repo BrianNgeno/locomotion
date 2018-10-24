@@ -4,3 +4,9 @@ from django.http import HttpResponse
 
 def home(request):
     return render(request,'main/home.html')
+
+'''
+logs out current user from account
+'''
+def logout(request):
+    return render(request, 'main_pages/home.html')
