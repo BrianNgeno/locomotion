@@ -3,6 +3,89 @@
 {% block content %}
 {{ block.super }}
 <div class="container-fluid" id="main">
-    
+    <div class="modal" tabindex="-1" id="myModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-center">{{item.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <<form id="questions">
+                        <div class="row">
+                            <div class="col-md-6">
+                                efficiency.
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="radio" name="rate1" id="terrible" checked="checked" value="terrible">Terrible
+                                <input type="radio" name="rate1" id="poor" value="poor">Poor
+                                <input type="radio" name="rate1" id="average" value="average">Average
+                                <input type="radio" name="rate1" id="very good" value="very good">Very Good
+                                <input type="radio" name="rate1" id="excellent" value="excellent">Excellent
+
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <div class="row">
+                            </br>
+                            <div class="col-md-6">
+                                time.
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="radio" name="rate2" id="terrible" checked="checked" value="terrible">Terrible
+                                <input type="radio" name="rate2" id="poor" value="poor">Poor
+                                <input type="radio" name="rate2" id="average" value="average">Average
+                                <input type="radio" name="rate2" id="very good" value="very good">Very Good
+                                <input type="radio" name="rate2" id="excellent" value="excellent">Excellent
+
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            </br>
+                            <div class="col-md-6">
+                                response.
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="radio" name="rate3" id="terrible" checked="checked" value="terrible">Terrible
+                                <input type="radio" name="rate3" id="poor" value="poor">Poor
+                                <input type="radio" name="rate3" id="average" value="average">Average
+                                <input type="radio" name="rate3" id="very good" value="very good">Very Good
+                                <input type="radio" name="rate3" id="excellent" value="excellent">Excellent
+
+                            </div>
+                        </div>
+
+                        <br>
+                        <button class="btn btn-outline-success" type="submit" id="submit" name="reset_form" value="Reset Form"
+                            onclick="this.form.reset();">SUBMIT</button>
+                        </form>
+                </div>
+            </div>
+            <div id="divhidden" style="display: none;">
+                <div class="col-md-8">
+                    <form action="{% url 'rate'  project.id %}" method="POST" enctype="multipart/form-data" id="ratingform">
+                        {% csrf_token %}
+                        {% bootstrap_form rateform %}
+                        <input type="submit" class="btn btn-outline-success" value="Upload">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            
+            <button type="button" class="btn btn-outline-danger btn-bg" data-dismiss="modal" data-toggle="tooltip"
+                data-placement="right" title="Close Single Image">Close</button>
+            <br>
+        </div>
+    </div>
 </div>
 {% endblock %}

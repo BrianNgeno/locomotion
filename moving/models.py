@@ -24,18 +24,18 @@ class Profile(models.Model):
 
         
 class Rate(models.Model):
-    efficiency = models.TextField(max_length = 50)
-    care = models.TextField(max_length = 50)
-    response = models.TextField(max_length = 50)
-    average = models.TextField(max_length = 50)
+    efficiency = models.TextField(max_length = 50,null=True)
+    care = models.TextField(max_length = 50,null=True)
+    response = models.TextField(max_length = 50,null=True)
+    average = models.TextField(max_length = 50,null=True)
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
 
-
+  
     def __str__(self):
         return self.design
 
-    class Meta:
-        ordering = ['-id']
+    # class Meta:
+    #     ordering = ['id']
 
     def save_rate(self):
         self.save()
@@ -49,7 +49,7 @@ class Rate(models.Model):
     def get_all_rating(cls):
         rating = Rate.objects.all()
         return rating
-        
+
 class Services(models.Model):
     screenshot = models.ImageField(upload_to = 'images/')
     service_name = models.CharField(max_length =10)

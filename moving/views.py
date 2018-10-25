@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
-from .forms import ProfileForm
+from .forms import ProfileForm,RateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import datetime as dt
@@ -42,3 +42,17 @@ def profile(request):
         form = ProfileForm()
     return render(request, 'profile/edit_profile.html', locals())
 
+@login_required(login_url='/accounts/login')
+def rate_site(request):
+    profile = User.objects.get(username=request.user)
+    if request.method == 'POST':
+        rateform = RateForm(request.POST, request.FILES)
+        print(rateform.errors)
+        if rateform.is_valid():
+            rating = rateform.save(commit=False)
+            rating.user = request.user
+            rating.save()
+            return redirect('home')
+    else:
+        rateform = RateForm()
+    return render(request,'main/home.html',locals())
