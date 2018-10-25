@@ -36,3 +36,22 @@ class Services(models.Model):
     profile = models.ForeignKey(Profile, null = True,related_name='project')
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.design
+
+    class Meta:
+        ordering = ['-id']
+
+    def save_rate(self):
+        self.save()
+
+    @classmethod
+    def get_rate(cls, profile):
+        rate = Rate.objects.filter(Profile__pk = profile)
+        return rate
+    
+    @classmethod
+    def get_all_rating(cls):
+        rating = Rate.objects.all()
+        return rating
