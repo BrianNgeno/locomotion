@@ -22,11 +22,6 @@
 
 <body>
   {% include "navbar.html" %}
-  <div id="progress-wrapper">
-    <button id="progress-bar-trigger">Run</button>
-    <div id="progress-bar" style="background-color: blue; width: 0%;">&nbsp;</div>
-    <div id="progress-bar-message">Waiting for progress to start...</div>
-  </div>
   {% block content %} {%endblock%}
 
   {% block scripts %}

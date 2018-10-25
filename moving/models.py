@@ -23,7 +23,16 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
 
         
-# class (models.Model):
-#     Profile_photo = models.ImageField(upload_to = 'images/',blank=True)
-#     Bio = models.TextField(max_length = 50)
-#     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+class Rate(models.Model):
+    efficiency = models.TextField(max_length = 50)
+    care = models.TextField(max_length = 50)
+    response = models.TextField(max_length = 50)
+    average = models.TextField(max_length = 50)
+    user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+
+class Services(models.Model):
+    screenshot = models.ImageField(upload_to = 'images/')
+    service_name = models.CharField(max_length =10)
+    profile = models.ForeignKey(Profile, null = True,related_name='project')
+    pub_date = models.DateTimeField(auto_now_add=True, null=True)
+    user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)

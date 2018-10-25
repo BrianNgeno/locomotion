@@ -6,6 +6,18 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
+def convert_dates(dates):
+    # function that gets the weekday number for the date.
+    day_number = dt.date.weekday(dates)
+
+    days = ['Monday','Tuesday','Wednesday','thursday','Friday','Saturday','Sunday']
+    '''
+    Returns the actual day of the week
+    '''
+    day = days[day_number]
+    return day
+
+
 def home(request):
     return render(request,'main/home.html')
 
@@ -28,3 +40,4 @@ def profile(request):
     else:
         form = ProfileForm()
     return render(request, 'profile/edit_profile.html', locals())
+

@@ -7,3 +7,8 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']
+
+class Rate(forms.ModelForm):
+    class Meta:
+        model = Rate
+        exclude =['user']
