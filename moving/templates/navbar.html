@@ -52,18 +52,20 @@
 </head>
 
 <body>
-    <div class="container-fluid" style="text-align: center;">
+    <div class="container-fluid" style="text-align: center;font-family: 'Cabin Sketch', cursive;background-color: rgb(0,0,0,0.9);">
         <div class="topnav">
             <div class="row">
                 <div class="col-md-2">
-                    <img src="../static/images/mainnav.png" height="50px;" width="200px;">
+                    <a href="{% url 'home' %}">
+                        <img src="../static/images/mainnav.png" height="50px;" width="200px;">
+                    </a>
                 </div>
 
                 <div class="col-md-2" height="5px;" width="10px;">
 
                 </div>
                 <div class="col-md-4" id="logo">
-                    <a href="#" style="color: white;"><strong>LocoMotion.</strong></a>
+                    <a href="#" style="color: white; font-family: 'Sail', cursive; font-size: 20px;text-decoration: none;">LocoMotion.</a>
                 </div>
                 <div class="col-md-2" id="drop">
                     {% if user.is_authenticated %}
@@ -91,8 +93,8 @@
 
                     {% else %}
                     <li style="list-style: none;">
-                        <a href="#" style="font-size: 13px;color: white;" class="btn btn-outline-dark">REGISTER /</a>
-                        <a href="#" style="font-size: 13px;color: white;" class="btn btn-outline-dark">LOGIN<a>
+                        <a href="/accounts/register" style="font-size: 13px;color: white;" class="btn btn-outline-dark">REGISTER </a>
+                        <a href="/accounts/login" style="font-size: 13px;color: white;" class="btn btn-outline-dark">LOGIN<a>
                     </li>
 
                     {% endif %}
@@ -101,8 +103,9 @@
                     <h1 class="profile-user-name" style="font-size: 14px;"></h1>
                     {% endif %}
                 </div>
-                <div class="col-md-2" style="text-align: center; padding-top: 16px; font-size: 13px; color:white;background-color: rgba(2, 2, 44, 0.705);">
-                    <a href="#" style="color: white;"  class="btn btn-outline-dark">RATE OUR SITE!</a>
+                <div class="col-md-2" style="text-align: center; padding-top: 5px; font-size: 13px; color:white;background-color: rgba(2, 2, 44, 0.705);">
+                    <a href="#" style="color: white;" class="btn btn-outline-dark" style="margin-bottom: 30px;">RATE
+                        OUR SITE!</a>
                 </div>
             </div>
         </div>

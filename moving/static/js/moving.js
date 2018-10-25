@@ -1,18 +1,17 @@
-$(document).ready(function () {
-    var $nav = $('.navbar');
-    var $bars = $('#bars');
-    var $closeBtn = $('.closeBtn');
-    var $main = $('#main');
-    
-    $bars.click(function () {
-      $nav.css('width', "250px");
-      $main.css({'marginLeft':'250px'});
-      $('body').css('backgroundColor',"rgba(0,0,0,0.9)")
-    });
-    $closeBtn.click(function () {
-      $nav.css('width', '0');
-      $main.css('marginLeft', '0');
-      $('body').css('backgroundColor',"rgba(0,0,0,0.9)")
-    })
-    
-  });
+function updateProgress(progressBarElement, progressBarMessageElement, progress) {
+    progressBarElement.style.width = progress.percent + "%";
+    progressBarMessageElement.innerHTML = progress.current + ' of ' + progress.total + ' processed.';
+  }
+  
+  var trigger = document.getElementById('progress-bar-trigger');
+  trigger.addEventListener('click', function(e) {
+    var bar = document.getElementById("progress-bar");
+    var barMessage = document.getElementById("progress-bar-message");
+    for (var i = 0; i < 11; i++) {
+      setTimeout(updateProgress, 500 * i, bar, barMessage, {
+        percent: 10 * i,
+        current: 10 * i,
+        total: 100
+      })
+    }
+  })

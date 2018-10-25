@@ -1,9 +1,48 @@
 .topnav{
-    background-color: rgb(0,0,0,0.9);
-    padding-top: 5px;
+    /* background-color: rgb(0,0,0,0.9); */
+    padding-top: 5px
 }
 .form-text{
     type: hidden;
     display: none;
     visibility: hidden;
+}
+#one{
+    font-family: 'Julius Sans One', sans-serif;
+    background-image: url(../images/login-bg.jpeg);
+    background-attachment: fixed;
+    height: 100vh;
+
+}
+#register{
+    background-image: url(../images/login-bg.jpeg);
+    background-attachment: fixed;
+}
+#user{
+    font-family: 'Julius Sans One', sans-serif;
+    background-color: rgb(0,0,0,0.9);
+    color:white;   
+}
+
+#on{
+    background-color: rgb(0,0,0,0.9); 
+}
+#top{
+    background-color: rgb(0,0,0,0.9);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color:white;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+#no{
+    background-color: rgb(0,0,0,0.9);
+    color:white;
+}
+#main{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0,0,0,0.8)),url(../images/moving-company.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100%;
 }
