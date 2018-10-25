@@ -30,12 +30,6 @@ class Rate(models.Model):
     average = models.TextField(max_length = 50)
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
 
-class Services(models.Model):
-    screenshot = models.ImageField(upload_to = 'images/')
-    service_name = models.CharField(max_length =10)
-    profile = models.ForeignKey(Profile, null = True,related_name='project')
-    pub_date = models.DateTimeField(auto_now_add=True, null=True)
-    user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.design
@@ -55,3 +49,10 @@ class Services(models.Model):
     def get_all_rating(cls):
         rating = Rate.objects.all()
         return rating
+        
+class Services(models.Model):
+    screenshot = models.ImageField(upload_to = 'images/')
+    service_name = models.CharField(max_length =10)
+    profile = models.ForeignKey(Profile, null = True,related_name='project')
+    pub_date = models.DateTimeField(auto_now_add=True, null=True)
+    user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
