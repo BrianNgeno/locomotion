@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container-fluid" id="book" >
+    <div class="jumbotron" id="bookingform">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" id="business">
+                <form action="{% url 'booking' service_id=single_service.id %}" method="POST" enctype="multipart/form-data">
+                    <h1 style="text-align:center;font-family: 'Sail', cursive; text-align: center;color: white;">LocoMotion <br>  We Move You.</h1>
+                    {% csrf_token %}
+                    {% bootstrap_form bookingform %}
+                    <input type="submit" class="btn btn-success" value="Finish Payment">
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

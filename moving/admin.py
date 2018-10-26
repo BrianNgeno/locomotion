@@ -5,3 +5,4 @@ from moving.models import *
 admin.site.register(Rate)
 admin.site.register(Profile)
 admin.site.register(Services)
+admin.site.register(Payment)

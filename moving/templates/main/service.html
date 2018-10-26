@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{{ block.super }}
+<div class="container-fluid" id="single-service">
+    <figure class="snip1206">
+        <img src="{{single_service.screenshot.url}} " alt="service" style="margin-top: 10px;">
+        <figcaption>
+            <h2 style="text-align:center;font-family: 'Sail', cursive;">LocoMotion</h2>
+            <p>We move you.</p>
+        </figcaption>
+        <a href="#"></a>
+    </figure>
+
+    <!-- <img src="{{single_service.screenshot.url}}" alt="service" style="margin-top: 10px;"> -->
+    <div class="row">
+        <div class="col l4">
+            <div class="z-depth-1 order-detail-cards">
+                <h6 class="center-align">Your Order</h6>
+                <h5 class="center-align">{{single_service.service_name}}</h5>
+            </div>
+        </div>
+
+        <div class="col l4">
+            <div class="z-depth-1 order-detail-cards">
+                <h6 class="center-align">Plan</h6>
+                <h5 class="center-align">{{single_service.description}}</h5>
+            </div>
+        </div>
+
+        <div class="col l4">
+            <div class="z-depth-1 order-detail-cards">
+                <h6 class="center-align">Price</h6>
+                <h5 class="center-align">ksh {{single_service.payment.pay}}</h5>
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'drop' service_id=single_service.id %}" class="btn btn-outline-danger"><i class="fa fa-shopping-cart" style="font-size:24px"></i> Remove From Cart</a>
+    <a href="{% url 'booking' service_id=single_service.id %}" class="btn btn-outline-success">Proceed to payment</a>
+
+</div>
+
+{% endblock %}

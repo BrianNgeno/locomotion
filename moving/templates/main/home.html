@@ -3,23 +3,24 @@
 {% block content %}
 {{ block.super }}
 <div class="container-fluid" id="main">
+
     <div class="modal" tabindex="-1" id="myModal" role="dialog">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" id="rating">
                 <div class="modal-header">
-                    <h5 class="text-center">{{item.name}}</h5>
+                    <h5 class="text-center" style="font-family: 'Sail', cursive;">LocoMotion</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <<form id="questions">
+                    <form id="questions">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-2">
                                 efficiency.
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input type="radio" name="rate1" id="terrible" checked="checked" value="terrible">Terrible
                                 <input type="radio" name="rate1" id="poor" value="poor">Poor
                                 <input type="radio" name="rate1" id="average" value="average">Average
@@ -33,11 +34,11 @@
                         <br>
                         <div class="row">
                             </br>
-                            <div class="col-md-6">
+                            <div class="col-md-2">
                                 time.
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input type="radio" name="rate2" id="terrible" checked="checked" value="terrible">Terrible
                                 <input type="radio" name="rate2" id="poor" value="poor">Poor
                                 <input type="radio" name="rate2" id="average" value="average">Average
@@ -50,11 +51,11 @@
                         <br>
                         <div class="row">
                             </br>
-                            <div class="col-md-6">
+                            <div class="col-md-2">
                                 response.
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input type="radio" name="rate3" id="terrible" checked="checked" value="terrible">Terrible
                                 <input type="radio" name="rate3" id="poor" value="poor">Poor
                                 <input type="radio" name="rate3" id="average" value="average">Average
@@ -67,25 +68,59 @@
                         <br>
                         <button class="btn btn-outline-success" type="submit" id="submit" name="reset_form" value="Reset Form"
                             onclick="this.form.reset();">SUBMIT</button>
-                        </form>
-                </div>
-            </div>
-            <div id="divhidden" style="display: none;">
-                <div class="col-md-8">
-                    <form action="{% url 'rate'  project.id %}" method="POST" enctype="multipart/form-data" id="ratingform">
-                        {% csrf_token %}
-                        {% bootstrap_form rateform %}
-                        <input type="submit" class="btn btn-outline-success" value="Upload">
                     </form>
+                    <div id="divhidden" style="display: none;">
+                        <div class="col-md-8">
+                            <form action="{% url 'rate'%}" method="POST" enctype="multipart/form-data" id="ratingform">
+                                {% csrf_token %}
+                                {% bootstrap_form rateform %}
+                                <input type="submit" class="btn btn-outline-success" value="Upload">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-outline-danger btn-bg" data-dismiss="modal" data-toggle="tooltip"
+                        data-placement="right" title="Close Single Image">Close</button>
+                    <br>
                 </div>
             </div>
+
         </div>
-        <div class="modal-footer">
-            
-            <button type="button" class="btn btn-outline-danger btn-bg" data-dismiss="modal" data-toggle="tooltip"
-                data-placement="right" title="Close Single Image">Close</button>
-            <br>
+
+    </div>
+    <div>
+        <h1 style="text-align:center;font-family: 'Sail', cursive; text-align: center;color: white;">LocoMotion <br>  We Move You.</h1>
+    </div>
+    {% if request.user.profile.service %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <a style="color:white;" href="{% url 'service' service_id=request.user.profile.service.id %}" class="btn btn-outline-dark"><i class="fa fa-shopping-cart" style="font-size:24px"></i> View
+                Cart</a>
         </div>
+        <div class="col-md-2"></div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+        {% for data in service %}
+        <a href="{% url 'add' service_id=data.id %}" style="font-size: 12px;text-decoration:none;font-family: 'Julius Sans One', sans-serif;">
+            <figure class="snip0019">
+                <img src="{{data.screenshot.url}}" alt="sample11" height="200px;" width="300px;" />
+                <figcaption>
+                    <div>
+                        <h2 style="font-size: 12px;font-family: 'Julius Sans One', sans-serif;">{{data.service_name}}</h2>
+                    </div>
+                    <div>
+                        <p style="font-size:12px;font-family: 'Julius Sans One', sans-serif;">{{data.description}}<br>Ksh {{data.payment.pay}}</p>
+                    </div>
+                </figcaption>
+            </figure><br>
+            <button class="btn btn-outline-secondary" style="font-size: 11px;margin-left: 80px;color:white;"><i class="fa fa-shopping-cart" style="font-size:24px"></i> Add to Cart<br>Ksh {{data.payment.pay}}</button>
+        </a>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{{ block.super }}
+<div class="container fluid">
+        <form action="{%url 'home' %}" id='kkk' method="post">
+            {%csrf_token%}
+    
+            {% bootstrap_form form layout='inline' %}
+            <button type="submit" value="Subscribe"></button>
+        </form>
+    </div>
+    <script>
+    $(document).ready(function(){
+        $('form').submit(function(event){
+          event.preventDefault()
+          form = $("form")
+      
+          $.ajax({
+            'url':'/ajax/newsletter/',
+            'type':'POST',
+            'data':form.serialize(),
+            'dataType':'json',
+            'success': function(data){
+              alert(data['success'])
+            },
+          })// END of Ajax method
+          $('#id_your_name').val('')
+          $("#id_email").val('')
+        }) // End of submit event
+      
+      }) // End of document ready function
+    </script>
+{% endblock %}
